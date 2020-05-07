@@ -27,7 +27,7 @@ public class AkilliCihaz {
             agArayuzu.mesajGoruntule("Giriş yapıldı\n\n");
             publisher.notifyObservers();   // giriş yapılınca eyleyici ve sıcaklık algılayıcı haberdar edilir.
             Araclar.bekle(1000);// 1 saniye bekle
-            islemSecimi();
+            islemSecimi();  // menü işlemleri sunulur.
         }
         else{
             Basla();
@@ -37,8 +37,8 @@ public class AkilliCihaz {
     private void islemSecimi(){
         String secim;
         do {
-            secim = agArayuzu.seceneksun();
-            switch (secim){
+            secim = agArayuzu.seceneksun();   // menu secenekleri sunulur. kullanıcıdan seçim alınır
+            switch (secim){   // seçimlere göre işlemler yapılır.
                 case SICAKLIK_GORUNTULE:
                     agArayuzu.mesajGoruntule("Sıcaklık görüntüleme işlemini seçtiniz\n");
                     IIslem s_Goruntuleme=SicaklikGoruntule.getInstance();
@@ -54,7 +54,7 @@ public class AkilliCihaz {
                     IIslem s_Kapat=SogutucuKapat.getInstance();
                     s_Kapat.islemYap();
                     break;
-                case CIKIS:
+                case CIKIS:   // başlangıç ekranına döner
                     agArayuzu.mesajGoruntule("Çıkış yapılıyor\n");
                     Araclar.bekle(1000);
                     Basla();

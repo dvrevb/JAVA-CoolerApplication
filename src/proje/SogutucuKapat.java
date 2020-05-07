@@ -19,13 +19,14 @@ public class SogutucuKapat implements IIslem{
     @Override
     public void islemYap() {         // ag arayüzünde çalıştırılır komut ordan gelir.
         boolean sonuc=mib.eyleyiciyeKapatTalebiGonder();   // mib algılayıcıya istek gönderir ve algılayıcı bu sonucu mibe gönderir.
-        if(sonuc==false){
+        if(!sonuc){   // soğutucu daha önceden kapatılmışsa
             Araclar.bekle(500);
             arayuz.mesajGoruntule("Soğutucu kapatılamadı. (Soğutucu zaten kapalı)\n");
         }
         else{
             Araclar.bekle(500);
             arayuz.mesajGoruntule("Soğutucu başarılı bir şekilde kapatıldı\n");
+            Araclar.bekle(2000);
         }
     }
 }

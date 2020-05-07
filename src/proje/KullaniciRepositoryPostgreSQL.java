@@ -4,11 +4,10 @@ import java.sql.*;
 
 public class KullaniciRepositoryPostgreSQL implements IKullaniciRepository {
     private static KullaniciRepositoryPostgreSQL nesne;
-   // private static IAgArayuzu agArayuzu;
+
 
     private KullaniciRepositoryPostgreSQL()
     {
-       // agArayuzu=AgArayuzu.getInstance();
     }
 
     public static synchronized KullaniciRepositoryPostgreSQL getInstance(){
@@ -30,8 +29,6 @@ public class KullaniciRepositoryPostgreSQL implements IKullaniciRepository {
         }
         return conn;
     }
-
-
     @Override
     public boolean kullaniciDogrula(String kullaniciAdi, String sifre)
     {

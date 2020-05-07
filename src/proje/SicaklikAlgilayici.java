@@ -9,6 +9,7 @@ public class SicaklikAlgilayici implements ISicaklikAlgilayici,IObserver{
     private IAgArayuzu agArayuzu;
     private int sicaklik;
     Random random;
+
     private SicaklikAlgilayici(){
         random=new Random();
         agArayuzu=AgArayuzu.getInstance();

@@ -19,7 +19,7 @@ public class SogutucuAc implements IIslem{
     @Override
     public void islemYap() {         // ag arayüzünde çalıştırılır komut ordan gelir.
         boolean sonuc=mib.eyleyiciyeAcTalebiGonder();   // mib algılayıcıya istek gönderir ve algılayıcı bu sonucu mibe gönderir.
-        if(sonuc==false){
+        if(!sonuc){   // soğutucu daha önceden açılmışsa
             Araclar.bekle(500);
             arayuz.mesajGoruntule("Soğutucu çalıştırılamadı (Soğutucu zaten açık)\n");
             Araclar.bekle(2000);

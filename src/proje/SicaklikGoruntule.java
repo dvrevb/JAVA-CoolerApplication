@@ -16,8 +16,6 @@ public class SicaklikGoruntule implements IIslem {
         return nesne;
     }
 
-
-
     @Override
     public void islemYap() { // ag arayüzünde çalıştırılır komut ordan gelir.
         int deger=mib.algilayicidanSicaklikTalepEt(); // mib algılayıcıya istek gönderir ve algılayıcı bu değeri mibe gönderir.

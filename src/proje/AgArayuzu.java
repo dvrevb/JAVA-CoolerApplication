@@ -6,7 +6,7 @@ public class AgArayuzu implements IAgArayuzu {
 
     private static AgArayuzu nesne;
     private IBilgiSistemi bilgiSistemi;
-    private int girisDenemesi; /// 5 ten fazla yanlışta doğrulama kutucuğu çıkacak
+    private int girisDenemesi; /// 5 veya 5ten fazla yanlışta doğrulama kutucuğu çıkacak
     private AgArayuzu()
     {
         girisDenemesi=0;
@@ -38,19 +38,20 @@ public class AgArayuzu implements IAgArayuzu {
     }
     @Override
     public boolean girisEkrani() {
-        if (girisDenemesi>5)  // 5 ten fazla giriş denemesi yapılıp başarısız sonuç alındıysa
+        if (girisDenemesi>=5)  // 5 veya 5ten fazla giriş denemesi yapılıp başarısız sonuç alındıysa
             Araclar.robotDogrulamaYap();
+
         mesajGoruntule("Kullanıcı Adınız: ");
         String kA=veriAl();
         mesajGoruntule("Şifreniz: ");
         String sifre=veriAl();
 
         boolean sonuc =bilgiSistemi.kullaniciKontrolEt(kA,sifre);
-        if(!sonuc){
+        if(!sonuc){  // yanlış giriş yapılırsa
             girisDenemesi++;
             mesajGoruntule("Kullanıcı doğrulanamadı lütfen kullanıcı adınızı veya şifrenizi kontrol ediniz\n\n");
         }
-        else{
+        else{   // doğru giriş yapılırsa
             mesajGoruntule("Kullanıcı doğrulandı giriş yapılıyor\n");
             Araclar.bekle(1000);
             girisDenemesi=0;

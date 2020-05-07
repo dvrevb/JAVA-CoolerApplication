@@ -42,7 +42,7 @@ public class Eyleyici implements IEyleyici,IObserver {
     }
 
     @Override     /* observer metodu*/
-    public void update() {
+    public void update() {  // giriş yapılınca eyleyici bekleme moduna alınır
         durum=BEKLEME;
         Araclar.bekle(1000);
         arayuz.mesajGoruntule("Soğutucu bekleme moduna alındı.\n");

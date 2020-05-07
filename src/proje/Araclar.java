@@ -22,7 +22,7 @@ public class Araclar {
             System.out.println("Robot olmadığınızı doğrulayın ...Değeri giriniz: "+deger);
             System.out.print(">>> ");
             girilen=scan.nextInt();
-        }while(deger!=girilen);
+        }while(deger!=girilen);    // çıkan değer girilen değere eşit olursa sonlandır
 
     }
 }
