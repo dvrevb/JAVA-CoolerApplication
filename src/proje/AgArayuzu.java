@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class AgArayuzu implements IAgArayuzu {
 
-
-
     private static AgArayuzu nesne;
     private IBilgiSistemi bilgiSistemi;
     private int girisDenemesi; /// 5 ten fazla yanlışta doğrulama kutucuğu çıkacak
@@ -64,12 +62,4 @@ public class AgArayuzu implements IAgArayuzu {
         Scanner input=new Scanner(System.in);
         return input.next();
     }
-
-
-    /* Observer metotları */
-  //  @Override
-    //public void update() {
-
-    //}
-
 }

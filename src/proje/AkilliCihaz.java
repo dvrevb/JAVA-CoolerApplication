@@ -6,6 +6,7 @@ public class AkilliCihaz {
     private IEyleyici eyleyici;
     private ISicaklikAlgilayici sicaklikAlgilayici;
     private IBilgiSistemi bilgiSistemi;
+    private Publisher publisher;
     private static final String SICAKLIK_GORUNTULE = "1";
     private static final String SOGUTUCU_AC = "2";
     private static final String SOGUTUCU_KAPAT = "3";
@@ -16,11 +17,16 @@ public class AkilliCihaz {
        eyleyici=Eyleyici.getInstance();
        sicaklikAlgilayici=SicaklikAlgilayici.getInstance();
         bilgiSistemi=BilgiSistemi.getInstance();
+
+        publisher=Publisher.getInstance();   // observerlar diziye atanıyor
+        publisher.attach((IObserver) eyleyici);
+        publisher.attach((IObserver) sicaklikAlgilayici);
     }
     public void Basla(){
         if(agArayuzu.girisEkrani()){
             agArayuzu.mesajGoruntule("Giriş yapıldı\n\n");
-            Araclar.bekle(1000);// yarım saniye bekle
+            publisher.notifyObservers();   // giriş yapılınca eyleyici ve sıcaklık algılayıcı haberdar edilir.
+            Araclar.bekle(1000);// 1 saniye bekle
             islemSecimi();
         }
         else{
@@ -49,13 +55,14 @@ public class AkilliCihaz {
                     s_Kapat.islemYap();
                     break;
                 case CIKIS:
-                    System.exit(0);
+                    agArayuzu.mesajGoruntule("Çıkış yapılıyor\n");
+                    Araclar.bekle(1000);
+                    Basla();
                     break;
                 default:
-                    agArayuzu.mesajGoruntule("Hatalı bir seçim yaptınız\n");
+                    agArayuzu.mesajGoruntule("Hatalı bir seçim yaptınız\n\n");
                     break;
             }
-        }while(secim!="4");
-
+        }while(!secim.equals("4"));
     }
 }

@@ -2,10 +2,11 @@ package proje;
 
 import java.util.ArrayList;
 
-public class Eyleyici implements IEyleyici {
+public class Eyleyici implements IEyleyici,IObserver {
 
     private static final int ACIK=1;
     private static final int KAPALI=2;
+    private static final int BEKLEME=3;
     private byte durum;
     private static Eyleyici nesne;
     private IAgArayuzu arayuz;
@@ -38,5 +39,12 @@ public class Eyleyici implements IEyleyici {
         durum=KAPALI;
         return true;
 
+    }
+
+    @Override     /* observer metodu*/
+    public void update() {
+        durum=BEKLEME;
+        Araclar.bekle(1000);
+        arayuz.mesajGoruntule("Soğutucu bekleme moduna alındı.\n");
     }
 }
