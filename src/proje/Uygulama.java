@@ -7,8 +7,9 @@ import java.sql.Statement;
 
 public class Uygulama {
     public static void main(String[] args) {
-       AkilliCihaz c=new AkilliCihaz();
-       c.Basla();
+       AkilliCihaz cihaz=new AkilliCihaz();
+       cihaz.Basla();
+
 
 
 
