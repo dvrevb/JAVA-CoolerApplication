@@ -36,7 +36,7 @@ public class AgArayuzu implements IAgArayuzu {
         mesajGoruntule("4-Cikis\n");
         mesajGoruntule("******************************************\n\n");
         mesajGoruntule("Seciminiz: ");
-        return veriAl();  /// string veri alınıyor. inte çevrildi
+        return veriAl();
     }
     @Override
     public boolean girisEkrani() {
