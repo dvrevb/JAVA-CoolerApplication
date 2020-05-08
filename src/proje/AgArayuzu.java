@@ -7,10 +7,12 @@ public class AgArayuzu implements IAgArayuzu {
     private static AgArayuzu nesne;
     private IBilgiSistemi bilgiSistemi;
     private int girisDenemesi; /// 5 veya 5ten fazla yanlışta doğrulama kutucuğu çıkacak
+    Publisher publisher;
     private AgArayuzu()
     {
         girisDenemesi=0;
         bilgiSistemi=BilgiSistemi.getInstance();
+        publisher=Publisher.getInstance();
     }
 
     public static synchronized AgArayuzu getInstance()
@@ -54,6 +56,7 @@ public class AgArayuzu implements IAgArayuzu {
         else{   // doğru giriş yapılırsa
             mesajGoruntule("Kullanıcı doğrulandı giriş yapılıyor\n");
             Araclar.bekle(1000);
+            publisher.notifyObservers();   // giriş yapılınca eyleyici ve sıcaklık algılayıcı haberdar edilir.
             girisDenemesi=0;
         }
         return sonuc;

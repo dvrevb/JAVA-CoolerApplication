@@ -25,7 +25,6 @@ public class AkilliCihaz {
     public void Basla(){
         if(agArayuzu.girisEkrani()){
             agArayuzu.mesajGoruntule("Giriş yapıldı\n\n");
-            publisher.notifyObservers();   // giriş yapılınca eyleyici ve sıcaklık algılayıcı haberdar edilir.
             Araclar.bekle(1000);// 1 saniye bekle
             islemSecimi();  // menü işlemleri sunulur.
         }
